@@ -1,0 +1,21 @@
+``python
+import telebot
+
+# Замените '7936068251:AAHCKwf9UBIZ_8_tkeG8M_PWi0uZ4xj4FX4' на ваш токен, полученный от BotFather
+API_TOKEN = 'YOUR_API_TOKEN'
+
+# Создаем экземпляр бота
+bot = telebot.TeleBot(API_TOKEN)
+
+# Обработчик для сообщений, содержащих текст "привет!"
+@bot.message_handler(func=lambda message: message.text.lower() == "привет!")
+def greet(message):
+    bot.reply_to(message, "Привет! Как я могу помочь вам?")
+
+# Обработчик для сообщений, содержащих текст "как дела?"
+@bot.message_handler(func=lambda message: message.text.lower() == "как дела?")
+def how_are_you(message):
+    bot.reply_to(message, "У меня все хорошо, спасибо! А у вас?")
+
+# Запуск бота
+bot.polling(none_stop=True)
